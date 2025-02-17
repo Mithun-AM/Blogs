@@ -8,7 +8,7 @@ const Header = () => {
   let { theme, toggleTheme } = useContext(AppContext);
 
   return (
-    <div className={`flex items-center justify-between w-full border-b shadow-md  fixed top-0  px-4 py-4 z-10 ${theme ? 'bg-dark-background shadow-slate-800 border-none' : 'bg-white'}`}>
+    <div className={`flex items-center justify-between w-full border-b  fixed top-0  px-4 py-4 z-10 ${theme ? 'bg-dark-background border-slate-700' : 'bg-white border-slate-300'}`}>
 
       <div className='flex-1 text-center'>
         <h1 className='text-3xl font-bold uppercase  dark:text-dark-text'>Blogs</h1>
