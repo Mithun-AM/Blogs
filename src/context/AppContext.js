@@ -10,12 +10,13 @@ export default function AppContextProvider({ children }) {
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(null);
     const [theme, setTheme] = useState(() => {
-        return localStorage.getItem("theme") === "dark";
+        return localStorage.getItem("theme") === "dark" || !localStorage.getItem("theme");
     });    
     const navigate = useNavigate();
 
     useEffect(() => {
         document.body.classList.toggle("dark", theme);
+        localStorage.setItem("theme", theme ? "dark" : "light");
     }, [theme]);
 
     const fetchBlogPost = useCallback(async (page = 1, tag = null, category = null) => {

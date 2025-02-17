@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 body {
-   @apply bg-light-background text-light-text;
+   @apply bg-light-background text-light-text border-light-border;
  }
  
  body.dark {
-   @apply bg-dark-background text-dark-text;
+   @apply bg-dark-background text-dark-text border-dark-border;
  }
  
 
@@ -25,13 +25,13 @@ body {
    position: absolute;
    width: 100%;
    height: 100%;
-   background: #474bff;
+   background: #8A75F0;
    border-radius: 50%;
    animation: spinner-vse6n7 1.25s infinite ease;
 }
 
 body.dark .spinner div {
-   background: #ffffff;  
+   background: #A78BFA;  
 }
 
 .spinner div:nth-child(1) {
