@@ -6,7 +6,7 @@
 
 ## Live Demo
 
-[🔗 Live Demo](https://mithunam-blogs-context-project.netlify.app/)
+🔗 [Live Demo](https://mithunam-blogs-context-project.netlify.app/)
 
 ## Features
 
@@ -42,6 +42,4 @@
 4. **API Used**
    ```sh
    https://codehelp-apis.vercel.app/api/get-blogs
-
-
 
