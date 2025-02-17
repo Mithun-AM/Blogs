@@ -3,7 +3,7 @@ import Home from "./hooks/Home"
 import BlogPage from "./hooks/BlogPage"
 import CategoryPage from "./hooks/CategoryPage"
 import TagPage from "./hooks/TagPage"
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect,useMemo } from 'react';
 import { AppContext } from './context/AppContext';
 import { Routes,Route, useLocation } from 'react-router';
 import { useSearchParams } from 'react-router-dom';
@@ -15,12 +15,13 @@ export default function App(){
 
   const {fetchBlogPost} = useContext(AppContext);
 
-  const [searchParams,setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const location = useLocation();
 
-  useEffect(()=>{
-    const page = searchParams.get("page") ?? 1;
+  const page = useMemo(() => searchParams.get("page") ?? 1, [searchParams]);
 
+  useEffect(()=>{
+    // console.log("Fetching blogs..."); 
     if(location.pathname.includes("tags")){
       const tag = location.pathname.split("/").at(-1).replaceAll("-"," ");
       fetchBlogPost(Number(page),tag);
@@ -32,7 +33,7 @@ export default function App(){
       fetchBlogPost(Number(page));
     }
 
-  },[location.pathname,location.search]);
+  },[fetchBlogPost, location.pathname, location.search, page]);
 
   //location.pathname = Retrieves the path excluding query params
   //location.search	= Retrieves only query params	
