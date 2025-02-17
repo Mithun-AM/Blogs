@@ -12,7 +12,7 @@ export default function BlogPage() {
     const [relatedBlogs, setRelatedBlogs] = useState([]);
     const location = useLocation();
     const navigation = useNavigate();
-    const { setLoading, loading } = useContext(AppContext);
+    const {theme, setLoading, loading } = useContext(AppContext);
 
     const blogId = location.pathname.split("/").at(-1);
 
@@ -41,8 +41,8 @@ export default function BlogPage() {
     return (
         <div className='w-full h-full flex flex-col gap-y-1 justify-center items-center'>
             <Header />
-            <div className="w-10/12 max-w-[670px] h-full flex justify-center items-center text-left flex-col mt-[6.2rem] mb-[5.5rem] gap-y-2">
-                <div className="border-2 py-1 px-4 rounded-md self-start flex">
+            <div className="w-11/12 max-w-[670px] h-full flex justify-center items-center text-left flex-col mt-[6.2rem] mb-[5.5rem] gap-y-2">
+                <div className={`border-2 py-1 px-3 rounded-md self-start flex border-slate-300 ${theme?'border-slate-600':''}`}>
                     <button onClick={() => navigation(-1)}><FaArrowLeftLong /> </button>
                 </div>
                 <div >

@@ -2,9 +2,9 @@ import { NavLink } from "react-router-dom";
 
 export default function BlogDetails({ post }) {
     return (
-        <div className="w-full p-3 flex flex-col gap-y-1 hover:shadow-lg">
+        <div className="w-full p-3 flex flex-col gap-y-1">
 
-            <NavLink to={`/blog/${post.id}`}>
+            <NavLink to={`/blog/${post.id}`} className="hover:text-blue-600 dark:hover:text-blue-600">
                 <span className="font-bold text-lg">{post.title}</span>
             </NavLink>
 
@@ -13,7 +13,7 @@ export default function BlogDetails({ post }) {
                     By
                     <span className="italic"> {post.author} </span>
                     on {" "}
-                    <NavLink to={`/categories/${post?.category?.replaceAll(" ", "-")}`}>
+                    <NavLink to={`/categories/${post?.category?.replaceAll(" ", "-")}`} className="hover:text-blue-600 dark:hover:text-blue-600">
                         <span className="underline font-semibold">{post.category}</span>
                     </NavLink>
                 </p>
@@ -28,7 +28,7 @@ export default function BlogDetails({ post }) {
 
             <div className="flex flex-row flex-wrap gap-x-2 text-xs mt-1 text-blue-600 font-semibold underline">
                 {post?.tags?.map((tag, index) => (
-                    <NavLink key={index} to={`/tags/${tag.replaceAll(" ", "-")}`}>
+                    <NavLink key={index} to={`/tags/${tag.replaceAll(" ", "-")}`} className="hover:text-blue-500 dark:hover:text-blue-400">
                         <span>{`#${tag}`}</span>
                     </NavLink>
                 )) || <span>No tags available.</span>}

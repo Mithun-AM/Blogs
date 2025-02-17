@@ -21,7 +21,6 @@ export default function App(){
   const page = useMemo(() => searchParams.get("page") ?? 1, [searchParams]);
 
   useEffect(()=>{
-    // console.log("Fetching blogs..."); 
     if(location.pathname.includes("tags")){
       const tag = location.pathname.split("/").at(-1).replaceAll("-"," ");
       fetchBlogPost(Number(page),tag);
@@ -34,9 +33,6 @@ export default function App(){
     }
 
   },[fetchBlogPost, location.pathname, location.search, page]);
-
-  //location.pathname = Retrieves the path excluding query params
-  //location.search	= Retrieves only query params	
 
   return(
 

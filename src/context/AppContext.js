@@ -1,4 +1,4 @@
-import { createContext, useState,useCallback } from "react";
+import { createContext, useState,useCallback,useEffect } from "react";
 import { baseUrl } from "../baseUrl";
 import { useNavigate } from "react-router";
 
@@ -9,7 +9,14 @@ export default function AppContextProvider({ children }) {
     const [posts, setPosts] = useState([]);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(null);
+    const [theme, setTheme] = useState(() => {
+        return localStorage.getItem("theme") === "dark";
+    });    
     const navigate = useNavigate();
+
+    useEffect(() => {
+        document.body.classList.toggle("dark", theme);
+    }, [theme]);
 
     const fetchBlogPost = useCallback(async (page = 1, tag = null, category = null) => {
         setLoading(true);
@@ -44,6 +51,15 @@ export default function AppContextProvider({ children }) {
         setPage(page);
     }
 
+    function toggleTheme() {
+        setTheme((prevTheme) => {
+          const newTheme = !prevTheme;
+          localStorage.setItem("theme", newTheme ? "dark" : "light");
+          document.body.classList.toggle('dark', newTheme);
+          return newTheme;
+        });
+      }
+
     const value = {
         loading,
         setLoading,
@@ -55,6 +71,8 @@ export default function AppContextProvider({ children }) {
         setTotalPages,
         fetchBlogPost,
         handlePageChange,
+        theme,
+        toggleTheme,
     };
 
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
