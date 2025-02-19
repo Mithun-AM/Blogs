@@ -16,9 +16,9 @@ export default function Blogs() {
                     (
                         posts.length === 0 ?
                             (
-                                <div>
+                                <div className="w-full h-full flex justify-center items-center p-4 mt-32 text-xl font-bold">
                                     <p>
-                                        No Posts Found
+                                        No Blogs Found
                                     </p>
                                 </div>
                             ) :

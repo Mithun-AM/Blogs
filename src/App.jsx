@@ -1,4 +1,3 @@
-
 import Home from "./hooks/Home"
 import BlogPage from "./hooks/BlogPage"
 import CategoryPage from "./hooks/CategoryPage"
@@ -7,9 +6,6 @@ import { useContext, useEffect,useMemo } from 'react';
 import { AppContext } from './context/AppContext';
 import { Routes,Route, useLocation } from 'react-router';
 import { useSearchParams } from 'react-router-dom';
-
-
-
 
 export default function App(){
 
@@ -35,9 +31,6 @@ export default function App(){
   },[fetchBlogPost, location.pathname, location.search, page]);
 
   return(
-
-
-
     <Routes>
       <Route path="/" element={<Home/>} />
       <Route path="/blog/:blogId" element={<BlogPage/>} />

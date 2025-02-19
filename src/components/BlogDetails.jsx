@@ -13,7 +13,7 @@ export default function BlogDetails({ post }) {
                     By
                     <span className="italic text-light-secondaryText dark:text-dark-secondaryText"> {post.author} </span>
                     on {" "}
-                    <NavLink to={`/categories/${post?.category?.replaceAll(" ", "-")}`} className="hover:text-light-accent dark:hover:text-dark-accent">
+                    <NavLink to={`/categories/${post.category.replaceAll(" ", "-")}`} className="hover:text-light-accent dark:hover:text-dark-accent">
                         <span className="underline font-semibold ">{post.category}</span>
                     </NavLink>
                 </p>

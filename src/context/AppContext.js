@@ -1,4 +1,4 @@
-import { createContext, useState,useCallback,useEffect } from "react";
+import { createContext, useState, useCallback, useEffect } from "react";
 import { baseUrl } from "../baseUrl";
 import { useNavigate } from "react-router";
 
@@ -11,7 +11,8 @@ export default function AppContextProvider({ children }) {
     const [totalPages, setTotalPages] = useState(null);
     const [theme, setTheme] = useState(() => {
         return localStorage.getItem("theme") === "dark" || !localStorage.getItem("theme");
-    });    
+    });
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -45,7 +46,7 @@ export default function AppContextProvider({ children }) {
         }
 
         setLoading(false);
-    }, []); 
+    }, []);
 
     function handlePageChange(page) {
         navigate({ search: `?page=${page}` })
@@ -54,12 +55,12 @@ export default function AppContextProvider({ children }) {
 
     function toggleTheme() {
         setTheme((prevTheme) => {
-          const newTheme = !prevTheme;
-          localStorage.setItem("theme", newTheme ? "dark" : "light");
-          document.body.classList.toggle('dark', newTheme);
-          return newTheme;
+            const newTheme = !prevTheme;
+            localStorage.setItem("theme", newTheme ? "dark" : "light");
+            document.body.classList.toggle('dark', newTheme);
+            return newTheme;
         });
-      }
+    }
 
     const value = {
         loading,
